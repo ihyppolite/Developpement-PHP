@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <title>Robot sur mesure </title>
+    </head>
+    <body>
+        
+        
+        <?php if(empty($_GET)): ?>
+        <form action="" method="get"  >
+            
+            <label for="name-robot">Nom du robot</label>
+            <input type="text" name="name-robot"/>
+            
+            <br>
+            
+              <!-- <label for="mental">Vous pouvez définir état mental de votre robot    1:tueur  2:normal</label> -->
+              <!-- <input type="number"  name="mental" min="0" max="2"/>-->
+             <div>
+                  <input type="radio"  name="mental" value="good">
+                  <label for="good">good</label>
+            </div>
+
+            <div>
+              <input type="radio"  name="mental" value="evil" >
+              <label for="evil">evil</label>
+            </div>
+            
+            <div>
+              <input type="radio" name="mental"  value="random" checked>
+              <label for="random">aléatoire</label>
+            </div>
+
+            
+            <br>
+            <input type="submit" value="Submit"/>
+            
+            
+        </form>
+        
+        <?php   else:   ?>
+        
+        
+    <?= "Salut, humain. je suis ".$ResultatFinal ?>
+    <br>
+    <?= "Nous sommes le ".date('d/m/Y').", il est ".date('H:i');  ?>
+    <br>
+    <?= PairOuImpair() ?>
+    <br>
+     <p id="red" > <?= $messageMental ?> </p>
+     
+    <?php endif; ?>
+
+    </body>
+</html>
+
