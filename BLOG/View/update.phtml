@@ -1,0 +1,38 @@
+<form  enctype="multipart/form-data" action="actionUpdate.php?numero=<?=$articlesdetail['idArticle']; ?>" method="post">
+  
+  <fieldset>
+    
+    <legend>Nouveau article</legend>
+    
+  <div class="form-group">
+    <label for="formGroupExampleInput">Title</label>
+    <input type="text" value="<?= $articlesdetail['title']?>" class="form-control" id="formGroupExampleInput" placeholder="title" name="title">
+  </div>
+  <div class="form-group">
+    <label for="exampleFormControlTextarea1">Content</label>
+    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name=content><?= $articlesdetail['content']; ?></textarea>
+  </div>
+  <div class="form-group">
+      <label for="image">Image</label>
+      <input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
+     Envoyez ce fichier : <input name="image" type="file" />
+  </div>
+  
+   <select name="idCategorie"class="form-select" aria-label="Default select example">
+    <?php foreach($categories as $categorie){ ?>
+    <option value="<?= $categorie['idCategorie']; ?>"> 
+    
+    <?= $categorie['name'];} ?>
+    
+    </option>
+    
+  </select>
+  
+    
+  </select>
+  <br>
+   <input type="submit" name="submit" class="btn btn-info btn-md  ms-1" value="Update">
+   
+   </fieldset>
+   
+</form>
