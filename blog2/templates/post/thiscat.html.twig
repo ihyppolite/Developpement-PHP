@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostController!{% endblock %}
+
+{% block body %}    
+{% for post in posts %}
+
+<div class="card-group d-flex" style="max-widht:300px">
+  <div class="card">
+    
+      <h5 class="card-title">{{post.title}}</h5>
+      <p class="card-text">{{post.content | slice(0,250)}}</p>
+      <div>
+      <a href="{{ path('show', {id:post.id}) }}" > Voir plus </a>
+      <a href="{{ path('showcat', {id:post.category.id}) }}" > {{post.category.name}} </a>
+      <div>
+      <p class="card-text"><small class="text-muted"></small></p>
+    </div>
+  </div>
+  
+
+
+
+{% endfor %}
+{% endblock %}

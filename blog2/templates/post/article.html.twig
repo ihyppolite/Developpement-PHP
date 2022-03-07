@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PostController!{% endblock %}
+
+{% block body %}
+<p> {{article.title}}</p>
+<p>{{article.category.name}}
+<p>{{article.content}}</p>
+<div> <a href="{{path('they_post', {id:article.autor.id})}}">{{article.autor.name}}</a> {{article.date| date("m/d/Y")}} </div>
+
+ {%  if is_granted('IS_AUTHENTICATED_FULLY') %}
+ <div id="comment" TOTO="{{article.id}}"> {{ form(form) }}</div>
+   {% else %}
+   <p>Connecter vous pour laisser un commentaire</p>
+   <a href='{{path("login")}}'> <button  class="btn btn-outline-success my-2 my-sm-0" type="submit">Login</button></a>
+
+    {% endif %}
+
+
+<div>
+
+{% for titi in toto %}
+
+<div class="card-group d-flex" style="max-widht:300px">
+  <div class="card">
+    
+      <p class="card-text">{{titi.content   }}</p>
+ 
+    </div>
+  </div>
+
+{% endfor %}
+<div id="text"><div>
+</div>
+
+{% endblock %}
+
+
+
+{% block javascript   %}
+<script type="text/javascript">
+
+
+let content = document.getElementById("comment_content");
+let id = document.getElementById('comment');
+let save= document.getElementById('comment_save');
+let div = document.getElementById('text');
+
+
+save.addEventListener("click",toto);
+
+
+function toto(){
+  event.preventDefault();
+fetch(`http://127.0.0.1:8000/ok/${id.getAttribute('TOTO')}/${content.value}`)
+.then(function(response){ 
+    return response.text()
+} )
+.then(function(data){
+    console.log(data);
+
+    div.innerHTML=data;
+
+
+    
+
+})
+
+
+}
+
+
+
+
+</script>
+{% endblock %}

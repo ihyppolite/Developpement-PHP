@@ -1,0 +1,26 @@
+    {% extends "base.html.twig" %}
+
+
+    {% block body %}
+    {% for product in products %}
+    
+    <div class="d-flex m-2">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" style="width:18rem; height:18rem;" src="{{ asset('assets/') ~ product.image }}" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">  {{ product.name }}</h5>
+                    <p class="card-text">  {{ product.description }}</p>
+                    <a href="#" class="btn btn-primary">  {{ product.price }}$ </a>
+                    <form  method="get" action="{{ path('add_cart', {id:product.id}) }}">
+                        <input type="number"  name="quantity"/>
+                        <input type="submit" value="Ajouter au panier" />
+                    </form>
+                </div>
+        </div>
+    <div>
+    
+    {% else %}
+        Votre panier est vide 
+    {% endfor %}
+
+    {% endblock  %} 

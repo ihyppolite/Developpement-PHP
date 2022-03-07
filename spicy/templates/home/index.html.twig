@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+
+
+<div class="container d-flex h-100">
+<div class="row align-self-center">
+{%  if is_granted('IS_AUTHENTICATED_FULLY') %}
+    <a href='{{path("product")}}'> <button type="button" class="btn btn-primary">nos articles</button></a>
+        <a href='{{path("app_logout")}}'> <button type="button" class="btn btn-primary">logout</button></a>
+
+   {% else %}
+     <a href='{{path("login")}}'> <button type="button" class="btn btn-primary">login</button></a>
+     <a href='{{path("app_register")}}'> <button type="button" class="btn btn-primary"></button></a>
+
+  
+
+    {% endif %}
+    </div>
+    <div class="center">
+    <label for="exampleDataList" class="form-label">search</label>
+<input class="form-control" list="datalistOptions" id="exampleDataList" placeholder="Type to search...">
+<datalist id="datalistOptions">
+  
+</datalist>
+    <div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts2   %}
+<script  src='{{asset("search.js")}}' type="text/javascript">
+
+
+
+</script>
+{% endblock %}

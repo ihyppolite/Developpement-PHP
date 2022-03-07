@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowOrderController!{% endblock %}
+
+{% block body %}
+{% for order in  orders %}
+
+<div class="card-group d-flex" style="max-widht:300px">
+  <div class="card">
+    
+      <h5 class="card-title">Numero de commande  {{order.id}}</h5>
+      <p class="card-text"> prix{{order.totalprice}}</p>
+      <div>
+      <a href="{{ path('show_order_detail', {id:order.id}) }}" > Voir plus details</a>
+      <p class="card-text"> {{order.date |date("m/d/Y")}}</p>
+      <div>
+      <p class="card-text"><small class="text-muted"></small></p>
+    </div>
+  </div>
+  
+
+
+
+{% endfor %}
+{% endblock %}

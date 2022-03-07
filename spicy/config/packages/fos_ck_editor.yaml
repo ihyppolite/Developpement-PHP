@@ -1,0 +1,15 @@
+fos_ck_editor:
+  configs:
+    my_config_1:
+      toolbar: "my_toolbar_1"
+      uiColor: "#000000"
+      # ...
+    my_config_2:
+      toolbar: "my_toolbar_2"
+      uiColor: "#ffffff"
+
+  toolbars:
+    configs:
+      my_toolbar_1:
+        [["Source", "-", "Save"], "/", ["Anchor"], "/", ["Maximize"]]
+      my_toolbar_2: [["Source"], "/", ["Anchor"], "/", ["Maximize"]]

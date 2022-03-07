@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos Produits{% endblock %}
+
+{% block body %}
+
+
+
+<div class="d-flex justify-content-around flex-wrap ">
+{% for product in products %}
+ <div class="card m-3" style="width: 30rem;">
+  <img class="card-img-top" src="{{ asset('assets/') ~ product.image }}" alt="Card image cap">
+  {# attribue product afin de recuperer id du produit #}
+  <div class="card-body" product="{{product.id}}">
+    <h5 class="card-title">{{product.name}}</h5>
+    <p class="card-text"> prix : {{product.price}} €   </p>
+    <p class="card-text">{{product.description | slice(0,250)}}</p>
+     <button class="addcart btn btn-dark" >
+        Ajouter au panier 
+      </button>  
+
+  </div>
+</div> 
+        
+  
+
+{% endfor %}
+
+ </div> 
+
+
+
+{% endblock %}
+
+{% block javascripts2   %}
+<script  src='{{asset("js/cart.js")}}' type="text/javascript"></script>
+{% endblock %}
+
+

@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ShowOrderDetailController!{% endblock %}
+
+{% block body %}
+ <h5 class="card-title">Details</h5>
+{% for details in  orderdetails %}
+
+<div class="card-group d-flex" style="max-widht:300px">
+  <div class="card">
+    
+     
+      <p class="card-text"> quantité{{details.quantity}}</p>
+      <p class="card-text"> prix unitaire :{{details.subtotal /  details.quantity }} </p>
+      <p> total:{{details.subtotal}} </p>
+      <div>
+     
+  </div>
+  
+
+
+
+{% endfor %}
+{% endblock %}

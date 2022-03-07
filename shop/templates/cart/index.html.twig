@@ -1,0 +1,70 @@
+    {% extends 'base.html.twig' %}
+
+    {% block stylesheets %}
+
+    <Link rel="styleSheet" href="{{ asset('css/main.css') }}" type="text/css" />
+
+    {% endblock %}
+
+    {% block body %}
+
+    <div class="d-flex justify-content-end mr-5 mt-5">
+    <a href='{{path("clear")}}' > vider le panier</a>
+    </div>
+    <div class="cart_section">
+    {% for product in cart %}
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <div class="cart_container">
+                    
+                        <div class="cart_items">
+                            <ul class="cart_list ">
+                                <li class="cart_item clearfix">
+                                    <div class="cart_item_image"><img style class="img_cart img-fluid   " src="{{ asset('assets/') ~ product.image }}" alt=""></div>
+                                    <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                                        <div class="cart_item_name cart_info_col">
+                                            <div class="cart_item_title">Nom</div>
+                                            <div class="cart_item_text">{{ product.name }}</div>
+                                        </div>
+                                        
+                                        <div class="cart_item_quantity cart_info_col">
+                                            <div class="cart_item_title">Quantité</div>
+                                            <div class="cart_item_text">{{ product.quantity }}</div>
+                                        </div>
+                                        <div class="cart_item_price cart_info_col">
+                                            <div class="cart_item_title">Prix</div>
+                                            <div class="cart_item_text">{{ product.price }}€</div>
+                                        </div>
+                                        <div class="cart_item_total cart_info_col">
+                                            <div class="cart_item_title">Total</div>
+                                            <div class="cart_item_text">{{ product.total }}€</div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        
+    {% endfor %}
+    </div>
+
+
+    <div>
+    <p class="text-center price_font">Prix total de la commande : {{endprice}}€</p>
+    </div>
+    <div class="d-flex justify-content-center">
+    <a href='{{path("valide")}} ' class="btn btn-secondary"> Passer commande</a>
+    </div>
+    
+        
+    
+    
+    {% endblock %}

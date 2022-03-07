@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+<h1 class="text-center mb-5">Welcome</h1>
+<div class="d-flex flex-row flex-wrap  justify-content-around ">
+
+{% for article in articles %}
+
+<div class="card text-white bg-dark mb-3 " style="max-width: 18rem;">
+  <div class="card-header"><a class="text-white" href="{{ path('showcat', {id:article.category.id}) }}" > {{article.category.name}} </a></div>
+  <div class="card-body">
+    <h5 class="card-title">{{article.title}}</h5>
+    <p class="card-text">{{article.content | slice(0,250)}}</p>
+    <a href="{{ path('show', {id:article.id}) }}" > Voir plus </a>
+
+
+
+  </div>
+
+
+</div>
+
+ {% else %} 
+    pas de news
+{% endfor %}
+<div id="suite">
+
+</div>
+<button type="button"  id="more" class="btn btn-secondary">MoRE</button>
+</div>
+
+
+
+
+{% endblock %}
+
+
+{% block javascript   %}
+
+<script type="text/javascript">
+
+let count= 0;
+
+let save= document.getElementById('more');
+let div= document.getElementById('suite');
+save.addEventListener("click",toto);
+
+function toto(){
+
+  count++;
+
+  console.log(count)
+
+  event.preventDefault();
+fetch(`http://127.0.0.1:8000/home/${count}`)
+.then(function(response){ 
+    return response.text()
+} )
+.then(function(data){
+    console.log(data);
+
+    div.innerHTML+=data;
+
+
+
+})
+}
+
+</script>
+
+{% endblock %}

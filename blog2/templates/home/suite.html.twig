@@ -1,0 +1,21 @@
+<div class="d-flex flex-row flex-wrap  justify-content-around">
+{% for article in articles %}
+
+<div class="card text-white bg-dark mb-3 " style="max-width: 18rem;">
+  <div class="card-header"><a class="text-white" href="{{ path('showcat', {id:article.category.id}) }}" > {{article.category.name}} </a></div>
+  <div class="card-body">
+    <h5 class="card-title">{{article.title}}</h5>
+    <p class="card-text">{{article.content | slice(0,250)}}</p>
+    <a href="{{ path('show', {id:article.id}) }}" > Voir plus </a>
+
+
+
+  </div>
+
+
+</div>
+
+ {% else %} 
+    pas de news
+{% endfor %}
+
